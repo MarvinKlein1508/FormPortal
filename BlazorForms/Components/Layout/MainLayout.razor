@@ -10,8 +10,7 @@
 
 <div class="bb-page">
 
-    <Sidebar @ref="_sidebar"
-             ImageSrc="/assets/images/logo/sidebar_logo.png"
+    <Sidebar ImageSrc="/assets/images/logo/sidebar_logo.png"
              Title="BlazorForms"
              BadgeText="@($"v{Program.GetVersion()}")"
              DataProvider="SidebarDataProvider" />
@@ -22,7 +21,7 @@
             <div class="topbar bb-top-row">
                 @if (User is not null)
                 {
-                    <div class="topbar-item position-relative px-4" @onclick="async () => await _offcanvas.ShowAsync()">
+                    <div class="topbar-item position-relative px-4" @onclick="async () => {}">
                         <div class="position-relative">
                             <i class="bi bi-bell-fill"></i>
 
@@ -60,12 +59,6 @@
     </main>
 </div>
 
-<Offcanvas @ref="_offcanvas"
-           Title="@(localizer["NOTIFICATION_CENTER_TITLE"])">
-    <BodyTemplate>
-        <NotificationCenter Notifications="_notifications" />
-    </BodyTemplate>
-</Offcanvas>
 
 
 

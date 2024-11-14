@@ -12,6 +12,7 @@ using DbController.TypeHandler;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.FluentUI.AspNetCore.Components;
 using Plk.Blazor.DragDrop;
 using Spectre.Console;
 using System.Reflection;
@@ -49,7 +50,8 @@ builder.Services.AddApplication();
 builder.Services.AddDatabase(config.GetConnectionString("Default")!);
 
 builder.Services.AddHotKeys2();
-builder.Services.AddBlazorBootstrap();
+builder.Services.AddHttpClient();
+builder.Services.AddFluentUIComponents();
 builder.Services.AddLocalization(options =>
 {
     options.ResourcesPath = "Languages";

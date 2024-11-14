@@ -98,7 +98,7 @@ namespace BlazorForms.Components.Pages.Admin
 
         private async Task ShowDeleteModalAsync(User input)
         {
-            bool isDeleted = await base.ShowDeleteModalAsync(input, localizer["MODAL_DELETE_TITLE"], String.Format(localizer["MODAL_DELETE_TEXT"], input.DisplayName), localizer["MODAL_DELETE_SUCCESS"]);
+            bool isDeleted = false; // await base.ShowDeleteModalAsync(input, localizer["MODAL_DELETE_TITLE"], String.Format(localizer["MODAL_DELETE_TEXT"], input.DisplayName), localizer["MODAL_DELETE_SUCCESS"]);
             if (isDeleted)
             {
                 await LoadAsync();

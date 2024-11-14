@@ -1,4 +1,3 @@
-using BlazorBootstrap;
 using BlazorForms.Core;
 using BlazorForms.Core.Constants;
 using BlazorForms.Core.Extensions;
@@ -17,8 +16,8 @@ namespace BlazorForms.Components.Pages
 {
     public partial class FormEntryPage
     {
-        private Modal _historyModal = default!;
-        private Modal _statusModal = default!;
+        //private Modal _historyModal = default!;
+        //private Modal _statusModal = default!;
         [Parameter]
         public int FormId { get; set; }
         [Parameter]
@@ -286,11 +285,11 @@ namespace BlazorForms.Components.Pages
         {
 
 
-            await _statusModal.ShowAsync();
+            //await _statusModal.ShowAsync();
         }
         private async Task OnEntryStatusSavedAsync(FormEntryStatusChange newStatus)
         {
-            await _statusModal.HideAsync();
+            //await _statusModal.HideAsync();
             await OnParametersSetAsync();
         }
         private async Task UploadFileAsync(FormFileElement fileElement, InputFileChangeEventArgs e)
@@ -394,7 +393,7 @@ namespace BlazorForms.Components.Pages
 
         private async Task ShowHistoryModalAsync()
         {
-            await _historyModal.ShowAsync();
+            //await _historyModal.ShowAsync();
         }
     }
 }

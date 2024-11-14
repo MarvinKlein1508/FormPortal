@@ -1,5 +1,4 @@
-﻿using BlazorBootstrap;
-using BlazorForms.Core;
+﻿using BlazorForms.Core;
 using DbController;
 using DbController.MySql;
 using Microsoft.AspNetCore.Components;
@@ -12,7 +11,7 @@ namespace BlazorForms.Components.Pages.Admin
         protected T? Input { get; set; }
 
         protected EditForm? _form;
-        protected ConfirmDialog _deleteModal = default!;
+        //protected ConfirmDialog _deleteModal = default!;
         [Inject] public TService Service { get; set; } = default!;
 
         protected List<T> Data { get; set; } = [];
@@ -69,51 +68,51 @@ namespace BlazorForms.Components.Pages.Admin
                 Input = null;
             }
         }
-        protected async Task<bool> ShowDeleteModalAsync(T input, string modalTitle, string modalMessage, string deleteSuccessMessage)
-        {
-            var options = new ConfirmDialogOptions
-            {
-                YesButtonText = AppLocalizer["YES"],
-                YesButtonColor = ButtonColor.Success,
-                NoButtonText = AppLocalizer["NO"],
-                NoButtonColor = ButtonColor.Danger
-            };
+        //protected async Task<bool> ShowDeleteModalAsync(T input, string modalTitle, string modalMessage, string deleteSuccessMessage)
+        //{
+        //    var options = new ConfirmDialogOptions
+        //    {
+        //        YesButtonText = AppLocalizer["YES"],
+        //        YesButtonColor = ButtonColor.Success,
+        //        NoButtonText = AppLocalizer["NO"],
+        //        NoButtonColor = ButtonColor.Danger
+        //    };
 
-            var confirmation = await _deleteModal.ShowAsync(
-            title: modalTitle,
-            message1: modalMessage,
-            confirmDialogOptions: options);
+        //    var confirmation = await _deleteModal.ShowAsync(
+        //    title: modalTitle,
+        //    message1: modalMessage,
+        //    confirmDialogOptions: options);
 
-            if (confirmation)
-            {
-                using IDbController dbController = new MySqlController();
-                await dbController.StartTransactionAsync();
+        //    if (confirmation)
+        //    {
+        //        using IDbController dbController = new MySqlController();
+        //        await dbController.StartTransactionAsync();
 
-                try
-                {
-                    await Service.DeleteAsync(input, dbController);
-                    await dbController.CommitChangesAsync();
-                    //AppdatenService.DeleteRecord(input);
-                    await JSRuntime.ShowToastAsync(ToastType.success, deleteSuccessMessage);
-                }
-                catch (Exception ex)
-                {
-                    await dbController.RollbackChangesAsync();
-                    if (ex.HResult == -2147467259)
-                    {
-                        await JSRuntime.ShowToastAsync(ToastType.error, AppLocalizer["DELETE_ERROR_REFERENCE"]);
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+        //        try
+        //        {
+        //            await Service.DeleteAsync(input, dbController);
+        //            await dbController.CommitChangesAsync();
+        //            //AppdatenService.DeleteRecord(input);
+        //            await JSRuntime.ShowToastAsync(ToastType.success, deleteSuccessMessage);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            await dbController.RollbackChangesAsync();
+        //            if (ex.HResult == -2147467259)
+        //            {
+        //                await JSRuntime.ShowToastAsync(ToastType.error, AppLocalizer["DELETE_ERROR_REFERENCE"]);
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
 
-                return true;
-            }
+        //        return true;
+        //    }
 
-            return false;
+        //    return false;
 
-        }
+        //}
     }
 }

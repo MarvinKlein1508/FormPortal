@@ -34,7 +34,7 @@ namespace BlazorForms.Components.Pages.Admin
             int amount_of_statuses = await Service.GetTotalStatusAmount(dbController);
             if (amount_of_statuses > 1)
             {
-                await base.ShowDeleteModalAsync(input, localizer["MODAL_DELETE_TITLE"], localizer["MODAL_DELETE_TEXT"], localizer["MODAL_DELETE_SUCCESS"]);
+                //await base.ShowDeleteModalAsync(input, localizer["MODAL_DELETE_TITLE"], localizer["MODAL_DELETE_TEXT"], localizer["MODAL_DELETE_SUCCESS"]);
             }
             else
             {

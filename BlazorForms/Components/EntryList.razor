@@ -101,7 +101,7 @@
                                     <td class="text-right text-nowrap action-column">
                                         @if (CanDeleteEntry(item))
                                         {
-                                            <Button Color="ButtonColor.Danger" @onclick="async () => await ShowDeleteModalAsync(item)" Size="ButtonSize.Large" Class="me-1">
+                                            <Button Color="ButtonColor.Danger" @onclick="async () => {}" Size="ButtonSize.Large" Class="me-1">
                                                 <Icon Name="IconName.Trash" />
                                             </Button>
                                         }
@@ -143,5 +143,3 @@
         }
     </div>
 </div>
-
-<ConfirmDialog @ref="_deleteModal" />
