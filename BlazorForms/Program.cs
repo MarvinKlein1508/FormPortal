@@ -29,6 +29,8 @@ var config = builder.Configuration;
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddFluentUIComponents();
+
 builder.Services.AddRazorPages().WithRazorPagesRoot("/Components/Pages");
 
 builder.Services.AddServerSideBlazor()
@@ -50,8 +52,8 @@ builder.Services.AddApplication();
 builder.Services.AddDatabase(config.GetConnectionString("Default")!);
 
 builder.Services.AddHotKeys2();
-builder.Services.AddHttpClient();
-builder.Services.AddFluentUIComponents();
+
+
 builder.Services.AddLocalization(options =>
 {
     options.ResourcesPath = "Languages";
