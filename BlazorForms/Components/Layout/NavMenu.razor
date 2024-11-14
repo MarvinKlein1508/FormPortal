@@ -5,8 +5,27 @@
     <nav class="sitenav" aria-labelledby="main-menu">
         <FluentNavMenu Id="main-menu" Collapsible="true" Width="250" Title="Navigation menu" @bind-Expanded="expanded" CustomToggle="true">
             <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">@localizer["NAV_DASHBOARD"]</FluentNavLink>
+            <AuthorizeView Roles="@($"{Roles.EDIT_FORMS}, {Roles.EDIT_USERS}, {Roles.EDIT_STATUS}")">
+                <FluentNavGroup Title="@localizer["NAV_ADMIN"]" Icon="@(new Icons.Regular.Size20.ContentSettings())">
+                    <ChildContent>
+                        <FluentNavLink Href="/Admin/Users" Icon="@(new Icons.Regular.Size20.People())">@localizer["NAV_ADMIN_USERS"]</FluentNavLink>
+                        <FluentNavLink Href="/Admin/Status" Icon="@(new Icons.Regular.Size20.List())">@localizer["NAV_ADMIN_STATUS"]</FluentNavLink>
+                        <FluentNavLink Href="/Admin/Forms" Icon="@(new Icons.Regular.Size20.Form())">@localizer["NAV_ADMIN_FORMS"]</FluentNavLink>
+                    </ChildContent>
+                </FluentNavGroup>
+            </AuthorizeView>
+            <AuthorizeView Roles="@Roles.EDIT_ENTRIES">
+                <FluentNavLink Href="/Admin/Entries" Icon="@(new Icons.Regular.Size20.FolderOpen())">@localizer["NAV_ADMIN_FORM_ENTRIES"]</FluentNavLink>
+            </AuthorizeView>
             <AuthorizeView>
                 <Authorized>
+                    <FluentNavGroup Title="@localizer["NAV_ACCOUNT"]" Icon="@(new Icons.Regular.Size20.AppsListDetail())">
+                        <ChildContent>
+                            <FluentNavLink Href="/Account/Entries" Icon="@(new Icons.Regular.Size20.Pen())">@localizer["NAV_ACCOUNT_ENTRIES"]</FluentNavLink>
+                            <FluentNavLink Href="/Account/Assigned" Icon="@(new Icons.Regular.Size20.Send())">@localizer["NAV_ACCOUNT_ASSIGNED"]</FluentNavLink>
+                            <FluentNavLink Href="/Account/Details" Icon="@(new Icons.Regular.Size20.ContactCard())">@localizer["NAV_ACCOUNT_DETAILS"]</FluentNavLink>
+                        </ChildContent>
+                    </FluentNavGroup>
                     <FluentNavLink Href="/Account/Logout" Icon="@(new Icons.Regular.Size20.SignOut())">@localizer["NAV_ACCOUNT_LOGOUT"]</FluentNavLink>
                 </Authorized>
                 <NotAuthorized>
